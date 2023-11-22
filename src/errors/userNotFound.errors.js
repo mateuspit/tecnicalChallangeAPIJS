@@ -1,5 +1,5 @@
-export function emailAlreadyRegistered() {
+export function userNotFoundError() {
     return {
-        message: "Usuário e/ou senha inválidos",
+        message: "User not found",
     };
 }
