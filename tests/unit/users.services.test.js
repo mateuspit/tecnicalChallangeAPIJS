@@ -16,20 +16,20 @@ describe("users unit test suite", () => {
     //    const outputSignUp = userServices.createUser(userBodyInput);
     //    expect(outputSignUp).toBe().
     //})
-    it(`should return { message: "E-mail already registered" } when email already registered`, async () => {
-        const email2Check = `test@test.com`;
+    it("should return { message: 'E-mail already registered' } when email already registered", async () => {
+        const email2Check = "test@test.com";
 
         jest.spyOn(userRepositories, "findEmail").mockImplementation(() => {
             return {
                 email: "test@test.com"
-            }
+            };
         });
 
         try {
             await userServices.validateEmail(email2Check);
         }
         catch (e) {
-            expect(e).toStrictEqual({ message: "E-mail already registered" })
+            expect(e).toStrictEqual({ message: "E-mail already registered" });
         }
 
 
