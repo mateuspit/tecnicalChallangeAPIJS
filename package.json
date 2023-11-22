@@ -5,7 +5,7 @@
   "description": "technical challenge API",
   "main": "./src/app.js",
   "scripts": {
-    "start": "node ./src/app.js",
+    "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js"
   },
   "author": "Mateus Barcelos",

@@ -14,7 +14,6 @@ export async function createUser(userInput) {
 
 async function validateEmail(email) {
     const userEmail = await userRepositories.findEmail(email);
-    console.log(!!userEmail)
     if (userEmail) {
         throw emailAlreadyRegistered();
     }

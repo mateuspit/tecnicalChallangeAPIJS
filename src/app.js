@@ -10,13 +10,4 @@ app
     .get("/health", (_req, res) => res.send("OK!"))
     .use(router);
 
-//export function init(): Promise<Express> {
-//    connectDb();
-//    return PromA linguagem do desafio deve ser JavaScript.ise.resolve(app);
-//}
-
-//export async function close(): Promise<void> {
-//    await disconnectDB();
-//}
-
 export default app;
