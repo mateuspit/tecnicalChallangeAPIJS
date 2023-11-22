@@ -9,8 +9,7 @@ export async function postSignUp(req, res) {
         DDD: telefones.DDD,
         name: nome,
         email
-    }
-
+    };
 
     try {
         const userData = await userServices.createUser(userInput);
@@ -21,7 +20,7 @@ export async function postSignUp(req, res) {
             data_atualizacao: userData.updatedAt,
             ultimo_login: null,
             token: null,
-        }
+        };
 
         return res.status(httpStatus.CREATED).send(userOutput);
     }

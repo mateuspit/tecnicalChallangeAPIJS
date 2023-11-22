@@ -3,8 +3,11 @@ import { emailAlreadyRegistered } from "../errors/emailAlreadyRegistered.errors.
 import userRepositories from "../repositories/users.repositories.js";
 
 async function createUser(userInput) {
+    const user = await getUserByEmail(userInput.email);
 
-    await validateEmail(userInput.email);
+    if (user) {
+        throw emailAlreadyRegistered();
+    }
 
     const hashedPassword = await bcrypt.hash(userInput.password, 12);
     userInput.password = hashedPassword;
@@ -12,16 +15,13 @@ async function createUser(userInput) {
     return userRepositories.create(userInput);
 }
 
-async function validateEmail(email) {
-    const userEmail = await userRepositories.findEmail(email);
-    if (userEmail) {
-        throw emailAlreadyRegistered();
-    }
+async function getUserByEmail(email) {
+    return await userRepositories.findEmail(email);
 }
 
 const userServices = {
     createUser,
-    validateEmail
+    getUserByEmail
 };
 
 
