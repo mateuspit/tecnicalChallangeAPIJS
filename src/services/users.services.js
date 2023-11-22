@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import { emailAlreadyRegistered } from "../errors/emailAlreadyRegistered.errors.js";
 import userRepositories from "../repositories/users.repositories.js";
 
-export async function createUser(userInput) {
+async function createUser(userInput) {
 
     await validateEmail(userInput.email);
 
@@ -21,6 +21,7 @@ async function validateEmail(email) {
 
 const userServices = {
     createUser,
+    validateEmail
 };
 
 
