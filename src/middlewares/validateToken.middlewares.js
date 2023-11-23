@@ -13,19 +13,9 @@ export default function validateToken() {
             next();
         }
         catch (err) {
-
             if (err.message === "jwt expired") return res.status(httpStatus.UNAUTHORIZED).send({ mensagem: "Sessão inválida" });
             if (err.message === "invalid signature") return res.status(httpStatus.UNAUTHORIZED).send({ mensagem: "Não autorizado" });
-            return console.log(err.message);
+            return res.status(httpStatus.UNAUTHORIZED).send({ mensagem: "Não autorizado" });
         }
-        //const { userId } = jwt.verify(token[1], process.env.JWT_SECRET, function (err, decoded) {
-        //    if (err) {
-        //        return (err = {
-        //            message: "loucura"
-        //        });
-        //    }
-        //});
-        //if (!tokenExist) return res.status(httpStatus.UNAUTHORIZED).send({ mensagem: "Não autorizado" });
     });
-    //return console.log("test");
 }

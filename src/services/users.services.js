@@ -3,8 +3,9 @@ import { emailAlreadyRegisteredError } from "../errors/emailAlreadyRegistered.er
 import userRepositories from "../repositories/users.repositories.js";
 
 async function createUser(userInput) {
-    const user = await getUserByEmail(userInput.email);
 
+    const user = await getUserByEmail(userInput.email);
+    console.log("test getUserByEmail", user);
     if (user) {
         throw emailAlreadyRegisteredError();
     }

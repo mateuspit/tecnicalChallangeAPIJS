@@ -13,6 +13,7 @@ export async function postSignUp(req, res) {
 
     try {
         const userData = await userServices.createUser(userInput);
+        console.log("userData", userData);
 
         const userOutput = {
             id: userData.id,
@@ -33,7 +34,7 @@ export async function postSignUp(req, res) {
     }
 }
 
-export async function getUserByEmailId(req, res) {
+export async function getUserById(req, res) {
     const userId = res.locals.userId;
     try {
         const getUserOutput = await userServices.getUserById(userId);
@@ -46,7 +47,7 @@ export async function getUserByEmailId(req, res) {
 
 const userControllers = {
     postSignUp,
-    getUserByEmailId
+    getUserById
 };
 
 export default userControllers;

@@ -7,6 +7,6 @@ import { userSchema } from "../schemas/newUser.schemas.js";
 const usersRouter = Router();
 
 usersRouter.post("/users/signup", validateUser(userSchema), userControllers.postSignUp);
-usersRouter.get("/users", validateToken(), userControllers.getUserByEmailId);
+usersRouter.get("/users", validateToken(), userControllers.getUserById);
 
 export default usersRouter;
