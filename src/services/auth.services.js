@@ -12,7 +12,7 @@ async function login(userInput) {
     const isPasswordValid = await bcrypt.compare(userInput.password, user.password);
     if (!isPasswordValid) throw invalidCredentialsError();
 
-    const userSession = await createSession(545454);
+    const userSession = await createSession(user.id);
 
     const signInOutput = {
         id: user.id,
