@@ -9,6 +9,8 @@ async function login(userInput) {
     const user = await userServices.getUserByEmail(userInput.email);
     if (!user) throw userNotFoundError();
 
+    console.log(user);
+
     const isPasswordValid = await bcrypt.compare(userInput.password, user.password);
     if (!isPasswordValid) throw invalidCredentialsError();
 

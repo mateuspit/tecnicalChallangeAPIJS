@@ -11,7 +11,7 @@ describe("Users unit test suite", () => {
         it("Function userServices.getUserByEmail: should return falsy when user not found by email", async () => {
             const email2Check = "test@test.com";
 
-            jest.spyOn(userRepositories, "findUserByEmail").mockImplementation(() => {
+            jest.spyOn(userRepositories, "findUserByEmail").mockImplementationOnce(() => {
                 return null;
             });
 
@@ -23,7 +23,7 @@ describe("Users unit test suite", () => {
         it("Function userServices.getUserByEmail: should return an object when user found by email", async () => {
             const email2Check = "test@test.com";
 
-            jest.spyOn(userRepositories, "findUserByEmail").mockImplementation(() => {
+            jest.spyOn(userRepositories, "findUserByEmail").mockImplementationOnce(() => {
                 return {
                     id: 1,
                     email: "test69@test.com",
@@ -57,7 +57,7 @@ describe("Users unit test suite", () => {
         it("Function userServices.getUserById: should return an object when user found by id", async () => {
             const id2Check = 57485;
 
-            jest.spyOn(userRepositories, "findUserById").mockImplementation(() => {
+            jest.spyOn(userRepositories, "findUserById").mockImplementationOnce(() => {
                 return {
                     id: 18,
                     email: "test1@test.com",
@@ -88,7 +88,7 @@ describe("Users unit test suite", () => {
         it("Function userServices.getUserById: should return falsy when user not found by id", async () => {
             const id2Check = 57485;
 
-            jest.spyOn(userRepositories, "findUserById").mockImplementation(() => {
+            jest.spyOn(userRepositories, "findUserById").mockImplementationOnce(() => {
                 return null;
             });
 
@@ -111,15 +111,15 @@ describe("Users unit test suite", () => {
                 email: "test11@test.com"
             };
 
-            jest.spyOn(userServices, "getUserByEmail").mockImplementation(() => {
+            jest.spyOn(userServices, "getUserByEmail").mockImplementationOnce(() => {
                 return null;
             });
 
-            jest.spyOn(bcrypt, "hash").mockImplementation(() => {
+            jest.spyOn(bcrypt, "hash").mockImplementationOnce(() => {
                 return "$2b$12$IxZ.rJA9Qd5BzGOjYln8Guoa02jc4kfVd5Xuj2oNXeM2lkTEGu9qa";
             });
 
-            jest.spyOn(userRepositories, "create").mockImplementation(() => {
+            jest.spyOn(userRepositories, "create").mockImplementationOnce(() => {
                 return {
                     id: 20,
                     email: "test12@test.com",
@@ -157,7 +157,7 @@ describe("Users unit test suite", () => {
                 email: "test1@test.com"
             };
 
-            jest.spyOn(userServices, "getUserByEmail").mockImplementation(() => {
+            jest.spyOn(userServices, "getUserByEmail").mockImplementationOnce(() => {
                 return {
                     id: 19,
                     email: "test1aqui@test.com",
