@@ -65,22 +65,17 @@ sudo apt-get install nodejs -y
 https://github.com/mateuspit/tecnicalChallangeAPIJS
 ```
 
-4) Instalar os pacotes com npm: 
-```bash
-npm install
-```
+4) Criar banco de dados PostgreSQL;
 
-5) Criar banco de dados PostgreSQL;
+5) Configurar seu arquivo .env de acordo com .env.example e as configurações do seu banco PostgreSQL;
 
-6) Configurar seu arquivo .env de acordo com .env.example e as configurações do seu banco PostgreSQL;
-
-7) Buildar o projeto:
+6) Buildar o projeto com npm (instalado junto com Node):
 
 ```bash
 npm run build
 ```
 
-8) Iniciar o servidor do projeto:
+7) Iniciar o servidor do projeto:
 
 ```bash
 npm start
@@ -103,7 +98,29 @@ npm test
 
 #### Screenshots
 
-![App Screenshot](https://i.imgur.com/cLvUTqc.png)## Repositórios
+![App Screenshot](https://i.imgur.com/cLvUTqc.png)
+## Deploy na Plataforma Render
+
+A API está atualmente implantada na plataforma Render, proporcionando desempenho confiável e acessibilidade. Por favor, note que, devido à natureza gratuita, a API pode entrar em standby, o que pode resultar em um tempo de resposta inicial um pouco mais longo, geralmente em torno de 10 segundos no primeiro acesso.
+
+Aqui estão os alguns links para interação:
+
+- **Status de Saúde:**
+  [Verificar Status de Saúde](https://apiescribojs.onrender.com/health)
+
+- **Documentação da API:**
+  [Explore a Documentação](https://apiescribojs.onrender.com/api-docs/)
+
+Fique à vontade para explorar e entrar em contato se precisar de mais informações ou assistência!
+
+## Documentation
+
+Segue a documentação explicando e exemplificado algumas entradas e saídas para as rotas da aplicação.
+
+- **Documentação da API:**
+  [Explore a Documentação](https://apiescribojs.onrender.com/api-docs/)
+
+## Repositórios
 
 - [GitHub](https://github.com/mateuspit/tecnicalChallangeAPIJS)
 ## Autor
