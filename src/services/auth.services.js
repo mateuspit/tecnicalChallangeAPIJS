@@ -26,7 +26,7 @@ async function login(userInput) {
 }
 
 async function createSession(userId) {
-    const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "7 days" });
+    const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "30m" });
     return await sessionRepositories.create({
         token,
         userId,

@@ -16,12 +16,19 @@ async function createUser(userInput) {
 }
 
 async function getUserByEmail(email) {
-    return await userRepositories.findByEmail(email);
+    return await userRepositories.findUserByEmail(email);
+}
+
+async function getUserById(userId) {
+    const userDataOutput = await userRepositories.findUserById(userId);
+    delete userDataOutput.password;
+    return userDataOutput;
 }
 
 const userServices = {
     createUser,
-    getUserByEmail
+    getUserByEmail,
+    getUserById
 };
 
 

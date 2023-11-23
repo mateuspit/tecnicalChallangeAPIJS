@@ -33,8 +33,20 @@ export async function postSignUp(req, res) {
     }
 }
 
+export async function getUserByEmailId(req, res) {
+    const userId = res.locals.userId;
+    try {
+        const getUserOutput = await userServices.getUserById(userId);
+        return res.status(httpStatus.OK).send(getUserOutput);
+    }
+    catch (err) {
+        return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+    }
+}
+
 const userControllers = {
     postSignUp,
+    getUserByEmailId
 };
 
 export default userControllers;

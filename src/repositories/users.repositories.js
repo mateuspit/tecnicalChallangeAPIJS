@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function findByEmail(email) {
+async function findUserByEmail(email) {
     return prisma.User.findUnique({
         where: { email: email }
     });
@@ -23,9 +23,16 @@ async function create({ email, name, password, phone, DDD }) {
     });
 }
 
+async function findUserById(userId) {
+    return prisma.User.findUnique({
+        where: { id: userId }
+    });
+}
+
 const userRepositories = {
     create,
-    findByEmail
+    findUserByEmail,
+    findUserById
 };
 
 export default userRepositories;

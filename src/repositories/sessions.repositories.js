@@ -13,8 +13,15 @@ async function create({ token, userId }) {
     });
 }
 
+async function getToken(token) {
+    return prisma.Session.findUnique({
+        where: { token }
+    });
+}
+
 const sessionRepositories = {
-    create
+    create,
+    getToken
 };
 
 export default sessionRepositories;
