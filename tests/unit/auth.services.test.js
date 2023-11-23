@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import sessionRepositories from "../../src/repositories/sessions.repositories";
-import authServices, { createSession } from "../../src/services/auth.services";
+import authServices from "../../src/services/auth.services";
 import userServices from "../../src/services/users.services";
 
 beforeEach(() => {
@@ -27,7 +27,7 @@ describe("Auth unit test suite", () => {
                 };
             });
 
-            const functionOutput = await createSession(userId);
+            const functionOutput = await authServices.createSession(userId);
 
             const expectOutput = {
                 id: expect.any(Number),
@@ -52,7 +52,7 @@ describe("Auth unit test suite", () => {
             });
 
             try {
-                await createSession(userId);
+                await authServices.createSession(userId);
             }
             catch (err) {
                 expect(err.message).toEqual("Invalid `prisma.session.create()` invocation");
@@ -104,30 +104,46 @@ describe("Auth unit test suite", () => {
             }
         });
 
-        //it("Function authServices.login: sucessful login", async () => {
-        //    const userInput = { password: "12345", email: "test1@test.com" };
+        it("Function authServices.login: sucessful login", async () => {
+            const userInput = { password: "12345", email: "test1@test.com" };
 
-        //    jest.spyOn(userServices, "getUserByEmail").mockImplementationOnce(() => {
-        //        return {
-        //            id: 18,
-        //            email: "test1@test.com",
-        //            name: "test",
-        //            password: "$2b$12$9MYnjLFsURWaD.Utk6tiQ.T1Auh02EL8dyVMT5zWYxsS8fZ86CBui",
-        //            DDD: "62",
-        //            phone: "123456789",
-        //            createdAt: new Date(),
-        //            updatedAt: new Date()
-        //        };
-        //    });
+            jest.spyOn(userServices, "getUserByEmail").mockImplementationOnce(() => {
+                return {
+                    id: 18,
+                    email: "test1@test.com",
+                    name: "test",
+                    password: "$2b$12$9MYnjLFsURWaD.Utk6tiQ.T1Auh02EL8dyVMT5zWYxsS8fZ86CBui",
+                    DDD: "62",
+                    phone: "123456789",
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                };
+            });
 
-        //    jest.spyOn(bcrypt, "compare").mockImplementationOnce(() => {
-        //        return true;
-        //    });
+            jest.spyOn(bcrypt, "compare").mockImplementationOnce(() => {
+                return true;
+            });
 
-        //    jest.spyOn(bcrypt, "compare").mockImplementationOnce(() => {
-        //        return true;
-        //    });
-        //});
+            jest.spyOn(authServices, "createSession").mockImplementationOnce(() => {
+                return {
+                    id: expect.any(Number),
+                    userId: expect.any(Number),
+                    token: expect.any(String),
+                    createdAt: expect.any(Date),
+                    updatedAt: expect.any(Date)
+                };
+            });
+
+            const functionOutput = await authServices.login(userInput);
+
+            expect(functionOutput).toEqual({
+                id: expect.any(Number),
+                data_criacao: expect.any(Date),
+                data_atualizacao: expect.any(Date),
+                ultimo_login: expect.any(Date),
+                token: expect.any(String)
+            });
+        });
     });
 
 });
