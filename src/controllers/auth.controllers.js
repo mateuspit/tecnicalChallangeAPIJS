@@ -19,7 +19,7 @@ export async function postSignIn(req, res) {
             return res.status(httpStatus.NOT_FOUND).send({ mensagem: "Usuário e/ou senha inválidos" });
 
         if (err.message === "Invalid password")
-            return res.status(httpStatus.CONFLICT).send({ mensagem: "Usuário e/ou senha inválidos" });
+            return res.status(httpStatus.UNAUTHORIZED).send({ mensagem: "Usuário e/ou senha inválidos" });
 
         return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
 
