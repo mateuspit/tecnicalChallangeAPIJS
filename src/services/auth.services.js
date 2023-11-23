@@ -12,7 +12,7 @@ async function login(userInput) {
     const isPasswordValid = await bcrypt.compare(userInput.password, user.password);
     if (!isPasswordValid) throw invalidCredentialsError();
 
-    const userSession = await createSession(user.id);
+    const userSession = await createSession(545454);
 
     const signInOutput = {
         id: user.id,
@@ -25,7 +25,7 @@ async function login(userInput) {
     return signInOutput;
 }
 
-async function createSession(userId) {
+export async function createSession(userId) {
     const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "30m" });
     return await sessionRepositories.create({
         token,

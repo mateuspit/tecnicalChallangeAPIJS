@@ -93,7 +93,7 @@ describe("Users unit test suite", () => {
             });
 
             try {
-                const functionOutput = await userServices.getUserById(id2Check);
+                await userServices.getUserById(id2Check);
             }
             catch (err) {
                 expect(err.message).toEqual("Cannot convert undefined or null to object");
@@ -171,7 +171,7 @@ describe("Users unit test suite", () => {
             });
 
             try {
-                const functionOutput = await userServices.createUser(userInputTest);
+                await userServices.createUser(userInputTest);
             }
             catch (err) {
                 expect(err.message).toBe("E-mail already registered");
