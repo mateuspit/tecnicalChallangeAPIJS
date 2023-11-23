@@ -38,5 +38,4 @@ const authServices = {
     createSession
 };
 
-
 export default authServices;

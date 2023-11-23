@@ -43,7 +43,7 @@ import { loginSchema } from "../schemas/login.schemas.js";
  *           application/json:
  *             example:
  *               mensagem: "Usuário e/ou senha inválidos"
-*       '404':
+ *       '404':
  *         description: Usuário não encontrado
  *         content:
  *           application/json:

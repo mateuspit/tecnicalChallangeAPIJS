@@ -3,7 +3,6 @@ import { emailAlreadyRegisteredError } from "../errors/emailAlreadyRegistered.er
 import userRepositories from "../repositories/users.repositories.js";
 
 async function createUser(userInput) {
-
     const user = await getUserByEmail(userInput.email);
     if (user) {
         throw emailAlreadyRegisteredError();
@@ -30,6 +29,5 @@ const userServices = {
     getUserByEmail,
     getUserById
 };
-
 
 export default userServices;

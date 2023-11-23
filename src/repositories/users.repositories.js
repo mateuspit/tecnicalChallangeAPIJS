@@ -8,7 +8,6 @@ async function findUserByEmail(email) {
     });
 }
 
-
 async function create({ email, name, password, phone, DDD }) {
     return prisma.User.create({
         data: {

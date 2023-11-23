@@ -1,5 +1,3 @@
-// swaggerOptions.js
-
 export default {
     swaggerDefinition: {
         openapi: "3.0.0",
@@ -10,9 +8,9 @@ export default {
         },
         servers: [
             {
-                url: "http://localhost:5000", // ajuste conforme necessário
+                url: "http://localhost:5000",
             },
         ],
     },
-    apis: ["./src/routes/*.js"], // ajuste conforme a estrutura do seu projeto
+    apis: ["./src/routes/*.js"],
 };
