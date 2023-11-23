@@ -1,6 +1,9 @@
 import httpStatus from "http-status";
 import userServices from "../services/users.services.js";
 
+const ERROR_MESSAGE_EMAIL_ALREADY_USED = "E-mail already registered";
+const USER_SINGUP_ERROR_MESSAGE = { mensagem: "E-mail já existente" };
+
 export async function postSignUp(req, res) {
     const { email, senha, telefones, nome } = req.body;
     const userInput = {
@@ -25,11 +28,10 @@ export async function postSignUp(req, res) {
         return res.status(httpStatus.CREATED).send(userOutput);
     }
     catch (err) {
-        if (err.message === "E-mail already registered")
-            return res.status(httpStatus.CONFLICT).send({ mensagem: "E-mail já existente" });
+        if (err.message === ERROR_MESSAGE_EMAIL_ALREADY_USED)
+            return res.status(httpStatus.CONFLICT).send(USER_SINGUP_ERROR_MESSAGE);
 
         return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
-
     }
 }
 

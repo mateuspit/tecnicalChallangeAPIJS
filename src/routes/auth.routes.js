@@ -51,8 +51,10 @@ import { loginSchema } from "../schemas/login.schemas.js";
  *               mensagem: "Usuário e/ou senha inválidos"
  */
 
+const SIGNIN_ROUTE = "/users/signin";
+
 const authenticationRouter = Router();
 
-authenticationRouter.post("/users/signin", validateUser(loginSchema), authControllers.postSignIn);
+authenticationRouter.post(SIGNIN_ROUTE, validateUser(loginSchema), authControllers.postSignIn);
 
 export default authenticationRouter;

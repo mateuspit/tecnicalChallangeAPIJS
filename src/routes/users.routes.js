@@ -97,11 +97,12 @@ import { userSchema } from "../schemas/newUser.schemas.js";
  *               mensagem: "E-mail já existente"
  */
 
-
+const SIGNUP_ROUTE = "/users/signup";
+const FETCH_USER_ROUTE = "/users";
 
 const usersRouter = Router();
 
-usersRouter.post("/users/signup", validateUser(userSchema), userControllers.postSignUp);
-usersRouter.get("/users", validateToken(), userControllers.getUserById);
+usersRouter.post(SIGNUP_ROUTE, validateUser(userSchema), userControllers.postSignUp);
+usersRouter.get(FETCH_USER_ROUTE, validateToken(), userControllers.getUserById);
 
 export default usersRouter;
