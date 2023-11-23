@@ -113,7 +113,7 @@ Aqui estão os alguns links para interação:
 
 Fique à vontade para explorar e entrar em contato se precisar de mais informações ou assistência!
 
-## Documentation
+## Documentação
 
 Segue a documentação explicando e exemplificado algumas entradas e saídas para as rotas da aplicação.
 
