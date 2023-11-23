@@ -13,7 +13,6 @@ export async function postSignUp(req, res) {
 
     try {
         const userData = await userServices.createUser(userInput);
-        console.log("userData", userData);
 
         const userOutput = {
             id: userData.id,
